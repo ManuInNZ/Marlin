@@ -26,7 +26,7 @@
 
 #include "../gcode.h"
 #include "../../module/motion.h"
-#include "../../lcd/ultralcd.h"
+#include "../../lcd/marlinui.h"
 #include "../../libs/buzzer.h"
 
 /**
@@ -61,7 +61,7 @@ void GcodeSuite::M206() {
  *       Use M206 to set these values directly.
  */
 void GcodeSuite::M428() {
-  if (axis_unhomed_error()) return;
+  if (homing_needed_error()) return;
 
   xyz_float_t diff;
   LOOP_XYZ(i) {
